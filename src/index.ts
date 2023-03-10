@@ -6,3 +6,7 @@ app.listen(3030,()=>{
     console.log("Listening to Sever");
     
 })
+
+
+// NORE
+// WE WRITE OUT POST IN OUR ENV FILE

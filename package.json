@@ -51,6 +51,7 @@
     "depd": "^2.0.0",
     "destroy": "^1.2.0",
     "diff": "^4.0.2",
+    "dotenv": "^16.0.3",
     "dynamic-dedupe": "^0.3.0",
     "ee-first": "^1.1.1",
     "encodeurl": "^1.0.2",
