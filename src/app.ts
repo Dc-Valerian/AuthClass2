@@ -3,11 +3,15 @@ import cors from "cors"
 import morgan from "morgan"
 import { errorHandler } from "./middleware/errorHandler"
 import { AppError, HtppCode } from "./utils/AppError"
+import api from "./api"
+
 
 
 const appConfig = (app:Application)=>{
     app.use(express.json()).use(cors()).use(morgan("dev"))
 
+    // API ENDPOINT
+    app.use("/api",api)
     
 
     // CHECKING FOR UNAVAILBLE ROUTES
