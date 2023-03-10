@@ -5,6 +5,9 @@ import morgan from "morgan"
 
 const appConfig = (app:Application)=>{
     app.use(express.json()).use(cors()).use(morgan("dev"))
+
+    // Error Handler
+    .use()
 }
 
 export default appConfig
