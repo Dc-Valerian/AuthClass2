@@ -2,6 +2,7 @@ import express,{Application,Request,Response,NextFunction} from "express"
 import cors from "cors"
 import morgan from "morgan"
 import { errorHandler } from "./middleware/errorHandler"
+import { AppError, HtppCode } from "./utils/AppError"
 
 
 const appConfig = (app:Application)=>{
@@ -10,13 +11,17 @@ const appConfig = (app:Application)=>{
     
 
     // CHECKING FOR UNAVAILBLE ROUTES
-    .all("*",(req:Request,res:Response,next:NextFunction)=>{
-        res.status(404).json({
-            message:`This Route ${req.originalUrl} doesn't exist`
-        })
+    app.all("",(req:Request,res:Response,next:NextFunction)=>{
+        next(
+            new AppError({
+                message:`This Route ${req.originalUrl} does not exist`,
+                httpCode:HtppCode.NOT_FOUND
+            })
+        )
     })
-    // Error Handler
-    .use(errorHandler)
-}
 
+    // Error Handler
+    app.use(errorHandler)
+
+}
 export default appConfig
