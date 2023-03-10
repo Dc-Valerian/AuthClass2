@@ -3,7 +3,7 @@ dotenv.config()
 
 const environmentVariable ={
     PORT:process.env.PORT as string,
-    MONGO_STRING_LOCAL : process.env.MONGO_STRING_LOCAL
+    MONGODB_STRING_LOCAL : process.env.MONGODB_STRING_LOCAL as string,
 }
 
 export default environmentVariable
