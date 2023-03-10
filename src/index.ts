@@ -1,8 +1,14 @@
 import express from "express"
+import appConfig from "./app";
+import environmentVariable from "./config/environmentVariable";
 
 const app = express()
 
-app.listen(3030,()=>{
+
+// APPLICATION INITALIZATION
+appConfig(app)
+
+app.listen(environmentVariable.PORT,()=>{
     console.log("Listening to Sever");
     
 })
