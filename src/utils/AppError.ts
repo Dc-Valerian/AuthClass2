@@ -11,4 +11,32 @@ export enum HtppCode{
     NOT_ACCEPTABLE = 406,
     INTERNAL_SEVER_ERRO = 500,
     BAD_GATEWAY = 502,
+    SERVICE_NOT_AVAILABLE = 503,
+    GATE_TIMEOUT = 504,
+}
+
+interface ErrorArgs{
+    name?:string;
+    isOperational?:boolean;
+    message:string;
+    httpCode:HtppCode
+}
+
+export class AppError extends Error{
+    public readonly name: string;
+    public readonly isOperational :boolean = true;
+    public readonly httpCode :HtppCode
+    constructor(args:ErrorArgs){
+        super(args.message)
+
+        Object.setPrototypeOf(this,new.target.prototype)
+
+        this.httpCode = args.httpCode
+        this.name = args.name || "error"
+
+        if(args.isOperational !== undefined){
+            this.isOperational = args.isOperational
+        }
+        Error.captureStackTrace(this)
+    }
 }
